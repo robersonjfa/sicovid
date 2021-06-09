@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+</head>
+<body>
+<form method="POST" class="post-form" action="/paciente/update/{{paciente.cpf}}">
+        {% csrf_token %}
+    <div class="container">
+<br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Dados do Paciente</h3>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">CPF:</label>
+    <div class="col-sm-4">
+        <input type="text" name="cpf" id="id_cpf" required maxlength="20" value="{{ paciente.cpf }}"/>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Nome:</label>
+    <div class="col-sm-4">
+        <input type="text" name="nome" id="id_nome" required maxlength="100" value="{{ paciente.nome }}" />
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Data de Nascimento:</label>
+    <div class="col-sm-4">
+        <input type="date" name="datanascimento" id="id_datanascimento" required maxlength="254" value="{{ paciente.datanascimento|date:'Y-m-d' }}" />
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Sexo:</label>
+    <div class="col-sm-4">
+        Masculino <input type="radio"
+				name="sexo" value="M" required="required" {% if paciente and paciente.sexo == 'M' %}{{ 'checked' }}{% endif %}> Feminino <input
+				type="radio" name="sexo" value="F" required="required" {% if paciente and paciente.sexo == 'F' %}{{ 'checked' }}{% endif %}>
+    </div>
+  </div>
+
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-success">Atualizar</button>
+    </div>
+  </div>
+    </div>
+</form>
+</body>
+</html>

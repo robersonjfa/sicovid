@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pacientes</title>
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/boostrap.min.css' %}"/>
+</head>
+<body>
+<table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>CPF</th>
+        <th>Nome</th>
+        <th>Data de Nascimento</th>
+        <th>Sexo</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for paciente in pacientes %}
+    <tr>
+        <td>{{ paciente.cpf }}</td>
+        <td>{{ paciente.nome }}</td>
+        <td>{{ paciente.datanascimento }}</td>
+        <td>{{ paciente.sexo }}</td>
+        <td>
+            <a href="/paciente/edit/{{ paciente.cpf }}"><span class="glyphicon glyphicon-pencil" >Editar</span></a>
+            <a href="/paciente/delete/{{ paciente.cpf }}">Excluir</a>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+<center><a href="/paciente" class="btn btn-primary">Adicionar Novo</a></center>
+</body>
+</html>

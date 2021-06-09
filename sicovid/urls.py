@@ -16,10 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from monitor.views import home, buscar, testar
+from paciente import views as pacienteviews
 
 urlpatterns = [
     path('', home),
     path('buscar', buscar),
     path('testar', testar),
     path('admin/', admin.site.urls),
+
+    # paciente
+    path('paciente', pacienteviews.paciente),
+    path('paciente/show', pacienteviews.show),
+    path('paciente/edit/<int:cpf>', pacienteviews.edit),
+    path('paciente/update/<int:cpf>', pacienteviews.update),
+    path('paciente/delete/<int:cpf>', pacienteviews.destroy),
 ]

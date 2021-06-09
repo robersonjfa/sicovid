@@ -3,7 +3,7 @@ from .models import Sintoma, Paciente
 
 
 def home(request):
-    return render(request, 'index.html')
+    return render(request, 'monitor/index.html')
 
 
 def buscar(request):
